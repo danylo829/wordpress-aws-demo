@@ -13,3 +13,7 @@ output "private_subnets_id" {
 output "default_sg" {
   value = aws_security_group.default.id
 }
+
+output "rds_sg" {
+  value = aws_security_group.rds.id
+}
