@@ -1,9 +1,9 @@
-# Define the VPC and its CIDR block
+# The VPC and its CIDR block
 resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
 }
 
-# Define the public and private subnets using count
+# The public and private subnets using count
 resource "aws_subnet" "public" {
   count             = length(var.availability_zones)
   vpc_id            = aws_vpc.main.id
@@ -18,25 +18,25 @@ resource "aws_subnet" "private" {
   availability_zone = "${var.region}${var.availability_zones[count.index]}"
 }
 
-# Define the Internet Gateway
+# The Internet Gateway
 resource "aws_internet_gateway" "main" {
   vpc_id = aws_vpc.main.id
 }
 
-# Define the NAT Gateway
+# The NAT Gateway
 resource "aws_nat_gateway" "main" {
   count         = length(var.availability_zones)
   allocation_id = aws_eip.main[count.index].id
   subnet_id     = aws_subnet.public[count.index].id
 }
 
-# Define the Elastic IP address for the NAT Gateway
+# The Elastic IP address for the NAT Gateway
 resource "aws_eip" "main" {
   count = length(var.availability_zones)
   vpc   = true
 }
 
-# Define the public routing table
+# The public routing table
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.main.id
 
@@ -46,7 +46,7 @@ resource "aws_route_table" "public" {
   }
 }
 
-# Define the public routing table
+# The public routing table
 resource "aws_route_table" "private" {
   count  = length(var.availability_zones)
   vpc_id = aws_vpc.main.id
@@ -71,7 +71,7 @@ resource "aws_route_table_association" "private" {
   route_table_id = aws_route_table.private[count.index].id
 }
 
-# Create a security group allowing incoming SSH traffic
+# Security group allowing incoming SSH traffic and http
 resource "aws_security_group" "default" {
   name_prefix = "default-sg"
   vpc_id      = aws_vpc.main.id
