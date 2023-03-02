@@ -16,7 +16,7 @@ resource "aws_lb_target_group" "main" {
   }
 }
 
-resource "aws_lb_target_group_attachment" "attach-app1" {
+resource "aws_lb_target_group_attachment" "instances" {
   count            = length(var.instances_id)
   target_group_arn = aws_lb_target_group.main.arn
   target_id        = var.instances_id[count.index]
