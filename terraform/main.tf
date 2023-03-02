@@ -46,5 +46,5 @@ resource "local_file" "tf_ansible_vars_file" {
     db_password: ${var.rds_password}
     db_name: ${module.rds.rds_db_name}
     DOC
-  filename = "../ansible/install_app/defaults/rds.yml"
+  filename = "../ansible/install_app/defaults/main/rds.yml"
 }
