@@ -46,4 +46,4 @@ inventory/
 # Include terraform backend config file
 backend.conf
 
-ansible/install_app/defaults/main.yml
+ansible/install_app/defaults/rds.yml
