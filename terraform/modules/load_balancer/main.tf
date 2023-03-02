@@ -41,7 +41,7 @@ resource "aws_lb" "main" {
   security_groups    = [var.security_group_id]
   subnets            = var.subnets
 
-  enable_deletion_protection = true
+  enable_deletion_protection = false
 
   tags = {
     Name = "main"
