@@ -1,7 +1,3 @@
-output "rds_host" {
-  value = module.rds.rds_host
-}
-
-output "rds_db_name" {
-  value = module.rds.rds_db_name
+output "lb_dns_name" {
+  value = module.load_balancer.load_balancer_dns_name
 }
