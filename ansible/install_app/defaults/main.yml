@@ -1,5 +1,0 @@
----
-# defaults file for install_app
-  user_name: wordpress_user
-  group_name: wordpress_users
-  app_dir: '/home/{{user_name}}/app'
