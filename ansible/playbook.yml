@@ -2,5 +2,9 @@
 - hosts: app_instances
   become: true
 
+  vars_files:
+    - secrets.yml
+    
   roles:
     - install_docker
+    - install_app
