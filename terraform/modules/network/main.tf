@@ -12,6 +12,9 @@ resource "aws_subnet" "public" {
   vpc_id            = aws_vpc.main.id
   cidr_block        = "10.0.${count.index + 10}.0/24"
   availability_zone = "${var.region}${var.availability_zones[count.index]}"
+  tags = {
+    "Name" = "public-${count.index + 1}"
+  }
 }
 
 resource "aws_subnet" "private" {
@@ -19,6 +22,9 @@ resource "aws_subnet" "private" {
   vpc_id            = aws_vpc.main.id
   cidr_block        = "10.0.${count.index + 20}.0/24"
   availability_zone = "${var.region}${var.availability_zones[count.index]}"
+  tags = {
+    "Name" = "private-${count.index + 1}"
+  }
 }
 
 # The Internet Gateway
@@ -112,5 +118,8 @@ resource "aws_security_group" "rds" {
     to_port     = 3306
     protocol    = "tcp"
     security_groups = [aws_security_group.default.id]
+  }
+  tags = {
+    "Name" = "RDS"
   }
 }
