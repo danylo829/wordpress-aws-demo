@@ -11,6 +11,11 @@
       group: '{{ group_name }}'
       state: present
 
+  - name: Create app directory
+    file:
+      path: '{{ app_dir }}'
+      state: directory
+
   - name: Copy docker compose file
     template:
       src: docker-compose.yml.j2
