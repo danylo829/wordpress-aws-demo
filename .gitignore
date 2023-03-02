@@ -40,8 +40,8 @@ secrets.yml
 # Include ansible config file
 ansible.cfg
 
-# Include ansible inventory folder
-inventory/
+# Include ansible hosts
+hosts
 
 # Include terraform backend config file
 backend.conf
