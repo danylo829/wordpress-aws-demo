@@ -54,7 +54,7 @@ This repository contains the Terraform and Ansible configuration to deploy a Wor
 4. Run the Ansible playbook to deploy WordPress by running the following command:
     ```bash
     cd ../ansible
-    ansible-playbook -i inventory/hosts playbook.yml --private-key=<path-to-ssh-private-key>
+    ansible-playbook -i hosts playbook.yml --private-key=<path-to-ssh-private-key>
     ```
 ## Accessing the Wordpress Application
 
