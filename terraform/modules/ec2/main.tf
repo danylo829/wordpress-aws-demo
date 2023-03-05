@@ -30,4 +30,8 @@ resource "aws_instance" "public" {
   }
 
   key_name = aws_key_pair.dev_key.key_name
+
+  lifecycle {
+    ignore_changes = [ami]
+  }
 }
