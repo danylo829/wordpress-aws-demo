@@ -50,9 +50,12 @@ resource "local_file" "tf_ansible_vars_file" {
 }
 
 resource "null_resource" "tf_ansible_host_file" {
-  for_each = toset(module.ec2.instances_public_ip)
+  count = length(module.ec2.instances_public_ip)
 
   provisioner "local-exec" {
-    command = "echo ${each.value} >> ../ansible/hosts"
+    command = "rm ../ansible/hosts; echo ${module.ec2.instances_public_ip[count.index]} >> ../ansible/hosts"
   }
+  depends_on = [
+    module.ec2
+  ]
 }
