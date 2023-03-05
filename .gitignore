@@ -31,12 +31,6 @@ override.tf.json
 # Include lock files
 *terraform.lock*
 
-# Include credentials
-credentials.json
-
-# Include ansible secrets file
-secrets.yml
-
 # Include ansible config file
 ansible.cfg
 
